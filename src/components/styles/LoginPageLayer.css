@@ -1,0 +1,230 @@
+/* Colors Boutique Login Page Styles */
+
+/* Main Page Background */
+.colors-boutique-login {
+  background-color: #EDE9E4;
+  /* Keeping original beige as requested "color also no need change" */
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container & Layout */
+.colors-boutique-login .container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card Styling - Cleaner and softer to match colorful playful logo */
+.colors-boutique-login .card {
+  border: none;
+  background: #ffffff;
+  /* Softer, more spread out shadow for a modern feel */
+  box-shadow: 0 20px 50px rgba(58, 53, 48, 0.05);
+  border-radius: 12px;
+  /* Softer rounded corners */
+  overflow: hidden;
+  max-width: 480px;
+  /* Slightly wider for better breathing room */
+  margin: 0 auto;
+}
+
+.colors-boutique-login .card-body {
+  padding: 3rem 2.5rem;
+}
+
+/* Auth Logo */
+.colors-boutique-login .auth-logo img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* Make sure logo blends well */
+}
+
+/* Typography - Using Poppins for modern clean look, Playfair for accents */
+.colors-boutique-login h5 {
+  color: #3A3530;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+.colors-boutique-login .text-muted {
+  color: #888 !important;
+  font-size: 0.9rem;
+}
+
+/* Tabs - Modernized */
+.colors-boutique-login .nav-tabs-custom {
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 0;
+}
+
+.colors-boutique-login .nav-tabs-custom .nav-link {
+  color: #999;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  background: transparent;
+  margin-bottom: -2px;
+  /* Overlap border */
+}
+
+.colors-boutique-login .nav-tabs-custom .nav-link:hover {
+  color: #3A3530;
+}
+
+.colors-boutique-login .nav-tabs-custom .nav-link.active {
+  color: #3A3530;
+  border-bottom: 2px solid #3A3530;
+  font-weight: 600;
+}
+
+/* Form Elements - Softer and cleaner */
+.colors-boutique-login .form-label {
+  color: #555;
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.colors-boutique-login .form-control {
+  background-color: #f8f9fa;
+  /* Very light grey input background */
+  border: 1px solid #e9ecef;
+  color: #333;
+  border-radius: 8px;
+  /* Rounded inputs */
+  padding: 12px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+}
+
+.colors-boutique-login .form-control:focus {
+  background-color: #fff;
+  border-color: #3A3530;
+  /* Focus color matching brand dark */
+  box-shadow: 0 0 0 3px rgba(58, 53, 48, 0.1);
+}
+
+/* Input Icons */
+.colors-boutique-login .input-custom-icon .btn-link {
+  color: #999;
+  padding-right: 12px;
+}
+
+.colors-boutique-login .input-custom-icon .btn-link:hover {
+  color: #3A3530;
+}
+
+/* Buttons - Modern Pill or Rounded Rect */
+.colors-boutique-login .btn-primary {
+  background-color: #3A3530;
+  border: 1px solid #3A3530;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+  /* Cleaner than uppercase */
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(58, 53, 48, 0.15);
+}
+
+.colors-boutique-login .btn-primary:hover {
+  background-color: #221f1c;
+  border-color: #221f1c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(58, 53, 48, 0.2);
+}
+
+.colors-boutique-login .btn-secondary {
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+  color: #333;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: 500;
+}
+
+.colors-boutique-login .btn-secondary:hover {
+  background-color: #e2e2e2;
+  color: #000;
+}
+
+/* Checkbox */
+.colors-boutique-login .form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.15em;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.colors-boutique-login .form-check-input:checked {
+  background-color: #3A3530;
+  border-color: #3A3530;
+}
+
+.colors-boutique-login .form-check-label {
+  color: #666;
+  font-size: 0.9rem;
+  padding-left: 0.25rem;
+}
+
+/* Links */
+.colors-boutique-login .text-decoration-underline,
+.colors-boutique-login a {
+  color: #3A3530 !important;
+  text-decoration: none !important;
+  font-weight: 500;
+}
+
+.colors-boutique-login .text-decoration-underline:hover,
+.colors-boutique-login a:hover {
+  text-decoration: underline !important;
+}
+
+/* Footer in Card or Bottom */
+.colors-boutique-login .footer-links {
+  margin-top: 2rem;
+}
+
+.colors-boutique-login .footer-links a {
+  color: #888 !important;
+  font-size: 0.85rem;
+  margin: 0 0.5rem;
+  font-weight: 400;
+}
+
+.colors-boutique-login .footer-links a:hover {
+  color: #3A3530 !important;
+}
+
+.colors-boutique-login .text-muted.mb-0 {
+  font-size: 0.8rem;
+  color: #aaa !important;
+  margin-top: 1.5rem;
+}
+
+/* Responsiveness */
+@media (max-width: 576px) {
+  .colors-boutique-login .card-body {
+    padding: 2rem 1.5rem;
+  }
+}

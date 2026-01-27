@@ -1,0 +1,109 @@
+.quantity-unit-container {
+    display: inline-flex;
+    align-items: center;
+  }
+  .quantity-controls {
+    display: none;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .quantity-controls.active {
+    display: flex;
+  }
+  .quantity-controls button {
+    padding: 4px 10px;
+    margin: 0 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+  }
+  .quantity-controls span {
+    min-width: 30px;
+    text-align: center;
+    display: inline-block;
+  }
+  .unit-box {
+    display: none;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  .unit-box.active {
+    display: inline-block;
+  }
+  .product-dropdown .highlighted {
+    background-color: #fbe7ee;
+}
+  .table .center-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+.item-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+.total-column {
+    width: 120px !important;
+}
+
+.action-column {
+    width: 80px !important;
+    text-align: center;
+}
+.item-name-cell {
+    width: 35% !important;
+}
+
+.edit-item-input {
+    width: 100%;
+}
+
+.edit-item-wrapper {
+    position: relative;
+}
+.edit-search-wrapper {
+    position: relative !important;
+    width: 100%;
+}
+
+.edit-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    max-height: 260px;
+    overflow-y: auto;
+
+    z-index: 99999 !important;   /* BIG FIX */
+}
+.edit-portal-dropdown {
+    position: fixed;   /* Not inside table */
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    width: 300px; /* overwritten by JS */
+    max-height: 260px;
+    overflow-y: auto;
+
+    z-index: 999999999 !important;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}

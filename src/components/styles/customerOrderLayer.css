@@ -1,0 +1,11 @@
+.nav-pills .nav-link.active {
+    background-color: #d60117 ;
+}
+
+.nav-item {
+background-color: #f5f6fa;
+border-radius: 5px;
+}
+  .status-content {
+    color: #111 ;
+  }

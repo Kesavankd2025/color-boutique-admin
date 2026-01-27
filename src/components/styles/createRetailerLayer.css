@@ -1,0 +1,19 @@
+.custom-avatar {
+    background-color: rgb(13, 110, 253, 0.1) !important;
+    width: 40px;
+    height: 40px;
+  }
+  .custom-avatar h5 {
+    font-size: 14px !important;
+  }
+.text-primary {
+    --bs-text-opacity: 1;
+    color: #d60117 !important;
+}
+
+.custom-title h5 {
+  font-size: 16px !important;
+}
+.font-size-24 {
+  font-size: 24px !important;
+}

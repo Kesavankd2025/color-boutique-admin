@@ -1,0 +1,53 @@
+.th-title {
+    text-align: start !important;
+}
+
+.align-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.i-checks input[type="checkbox"] {
+    /* display: none; */
+    all: revert;
+    all: unset;
+    appearance: checkbox;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.i-checks i {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+
+
+input[type="checkbox"] {
+    display: none;
+    all: revert;
+    all: unset;
+    appearance: checkbox;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.checkbox-replace {
+    margin-left: 25px;
+}

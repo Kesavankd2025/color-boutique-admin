@@ -1,0 +1,68 @@
+.contact-us-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info h5 {
+  color: #4b6cb7;
+}
+
+.contact-form .form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.map-container {
+  overflow: hidden;
+  border: 1px solid #eaeaea;
+}
+
+.footer-links {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #4b6cb7 !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-links span {
+    display: none;
+  }
+  
+  .contact-info .d-flex {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 2rem !important;
+  }
+  
+  .contact-info .me-4 {
+    margin-right: 0 !important;
+    margin-bottom: 1rem;
+  }
+}

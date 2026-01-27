@@ -1,0 +1,21 @@
+.table th {
+    background-color: #3A3530 !important;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: left;
+}
+
+.table td {
+    font-size: 14px;
+    color: #555;
+    padding: 10px;
+    vertical-align: middle;
+    /* text-align: center; */
+    text-align: left;
+    white-space: nowrap;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f8ff;
+}

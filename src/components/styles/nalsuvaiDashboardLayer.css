@@ -1,0 +1,21 @@
+.img-thumbnail {
+    width: 15%;
+    padding: 10px;
+    margin: 10px;
+}
+
+
+h4, .h4 {
+    font-size: 1rem !important; 
+}
+
+
+h6, .h6 {
+    all: unset !important;
+    font-size: 1rem !important;
+  }
+
+  .popular-product-box {
+    background-color: var(--bs-tertiary-bg);
+    padding: 5px;
+  }

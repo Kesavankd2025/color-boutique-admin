@@ -1,0 +1,255 @@
+import { Icon } from '@iconify/react/dist/iconify.js';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import apiProvider from '../apiProvider/api';
+import { IMAGE_URL } from '../network/apiClient';
+import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import {
+  setBrands,
+  setCurrentBrand,
+  setLoading,
+  setError,
+  addBrand,
+  updateBrand,
+  deleteBrand,
+} from '../redux/slices/brandSlice';
+
+const BrandPage = () => {
+  const dispatch = useDispatch();
+  const { brands, loading, error, currentBrand } = useSelector((state) => state.brand);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [formData, setFormData] = useState({
+    name: '',
+    logo: null
+  });
+  const [errors, setErrors] = useState({});
+  const [preview, setPreview] = useState(null);
+
+  useEffect(() => {
+    loadBrands();
+  }, [currentPage]);
+
+  const loadBrands = async () => {
+    try {
+      dispatch(setLoading(true));
+      const response = await apiProvider.getBrands({
+        page: currentPage,
+        limit: 10
+      });
+      dispatch(setBrands(response.data));
+    } catch (error) {
+      dispatch(setError(error.message));
+      toast.error(error.message);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) {
+      newErrors.name = 'Brand name is required';
+    }
+    if (!formData.logo && !currentBrand) {
+      newErrors.logo = 'Logo is required';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setFormData(prev => ({
+        ...prev,
+        logo: file
+      }));
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    if (formData.logo) {
+      formDataToSend.append('logo', formData.logo);
+    }
+
+    try {
+      dispatch(setLoading(true));
+      if (currentBrand) {
+        const response = await apiProvider.updateBrand(currentBrand._id, formDataToSend);
+        dispatch(updateBrand(response.data));
+        toast.success('Brand updated successfully');
+      } else {
+        const response = await apiProvider.createBrand(formDataToSend);
+        dispatch(addBrand(response.data));
+        toast.success('Brand created successfully');
+      }
+      resetForm();
+      loadBrands();
+    } catch (error) {
+      dispatch(setError(error.message));
+      toast.error(error.message);
+    }
+  };
+
+  const handleEdit = (brand) => {
+    dispatch(setCurrentBrand(brand));
+    setFormData({
+      name: brand.name,
+      logo: null
+    });
+    setPreview(brand.logo?.imagePath ? `${IMAGE_URL}${brand.logo.imagePath}` : null);
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      });
+
+      if (result.isConfirmed) {
+        await apiProvider.deleteBrand(id);
+        dispatch(deleteBrand(id));
+        toast.success('Brand deleted successfully');
+        loadBrands();
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      logo: null
+    });
+    setPreview(null);
+    dispatch(setCurrentBrand(null));
+    setErrors({});
+  };
+
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <ToastContainer />
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h2 className="text-2xl font-bold mb-4">{currentBrand ? 'Edit Brand' : 'Add New Brand'}</h2>
+        
+        <form onSubmit={handleSubmit} className="space-y-4 mb-8">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Brand Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm ${errors.name ? 'border-red-500' : ''}`}
+            />
+            {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Logo</label>
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              className={`mt-1 block w-full ${errors.logo ? 'border-red-500' : ''}`}
+            />
+            {errors.logo && <p className="mt-1 text-sm text-red-500">{errors.logo}</p>}
+            {preview && (
+              <div className="mt-2">
+                <img src={preview} alt="Preview" className="h-20 w-20 object-cover rounded" />
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-2">
+            <button
+              type="submit"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              disabled={loading}
+            >
+              {loading ? 'Processing...' : currentBrand ? 'Update Brand' : 'Create Brand'}
+            </button>
+            {currentBrand && (
+              <button
+                type="button"
+                onClick={resetForm}
+                className="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
+
+        <div className="mt-8">
+          <h3 className="text-xl font-bold mb-4">Brand List</h3>
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Logo</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {brands.map((brand) => (
+                  <tr key={brand._id}>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {brand.logo?.imagePath && (
+                        <img
+                          src={`${IMAGE_URL}${brand.logo.imagePath}`}
+                          alt={brand.name}
+                          className="h-10 w-10 object-cover rounded"
+                        />
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">{brand.name}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <button
+                        onClick={() => handleEdit(brand)}
+                        className="text-indigo-600 hover:text-indigo-900 mr-2"
+                      >
+                        <Icon icon="mdi:pencil" width="20" />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(brand._id)}
+                        className="text-red-600 hover:text-red-900"
+                      >
+                        <Icon icon="mdi:delete" width="20" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default BrandPage;

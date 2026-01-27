@@ -1,0 +1,66 @@
+.shipping-policy-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.shipping-content h2 {
+  color: #4b6cb7;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.shipping-content h3 {
+  color: #5a5a5a;
+  margin-top: 1.5rem;
+}
+
+.shipping-content ul {
+  padding-left: 1.5rem;
+}
+
+.shipping-content ul li {
+  margin-bottom: 0.5rem;
+}
+
+.shipping-content .table th {
+  background-color: #f1f5f9;
+}
+
+.contact-info {
+  border-left: 4px solid #4b6cb7;
+}
+
+.footer-links {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #4b6cb7 !important;
+  text-decoration: underline !important;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem !important;
+  }
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-links span {
+    display: none;
+  }
+  
+  .table-responsive {
+    font-size: 0.875rem;
+  }
+}

@@ -1,0 +1,52 @@
+.custom-avatar {
+    background-color: rgb(13, 110, 253, 0.1) !important;
+    width: 40px;
+    height: 40px;
+  }
+  .custom-avatar h5 {
+    font-size: 14px !important;
+  }
+
+.text-primary {
+    --bs-text-opacity: 1;
+    color: #d60117  !important;
+}
+
+.custom-title h5 {
+  font-size: 16px !important;
+}
+.font-size-24 {
+  font-size: 24px !important;
+}
+.custom-switch-success:checked {
+  background-color: #198754 !important; /* Bootstrap's success green */
+  border-color: #198754 !important;
+}
+
+.custom-switch-success {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.ck-editor__editable {
+  min-height: 200px;
+  height: auto;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .ck-editor__editable {
+    min-height: 200px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .ck-editor__editable {
+    min-height: 200px;
+  }
+}
+
+/* .ck.ck-editor__main>.ck-editor__editable:not(.ck-focused) {
+  border-color: var(--ck-color-base-border);
+  height: 200px !important;
+} */
