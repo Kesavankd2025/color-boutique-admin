@@ -25,6 +25,9 @@ const BannerManagement = () => {
 
   const [formData, setFormData] = useState({
     title: "",
+    heading: "",
+    subheading: "",
+    buttonName: "",
     images: [],
   });
   const [errors, setErrors] = useState({});
@@ -141,6 +144,9 @@ const BannerManagement = () => {
 
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.title);
+    formDataToSend.append("heading", formData.heading);
+    formDataToSend.append("subheading", formData.subheading);
+    formDataToSend.append("buttonName", formData.buttonName);
     let imageIds = [];
     formData.images.forEach((image) => {
       if (image instanceof File) {
@@ -180,6 +186,9 @@ const BannerManagement = () => {
     setCurrentBannerId(banner._id);
     setFormData({
       title: banner.name || "",
+      heading: banner.heading || "",
+      subheading: banner.subheading || "",
+      buttonName: banner.buttonName || "",
       images: banner.images || [],
     });
     setShowModal(true);
@@ -220,6 +229,9 @@ const BannerManagement = () => {
     setCurrentBannerId(null);
     setFormData({
       title: "",
+      heading: "",
+      subheading: "",
+      buttonName: "",
       images: [],
     });
     setErrors({});
@@ -230,6 +242,9 @@ const BannerManagement = () => {
     setShowModal(false);
     setFormData({
       title: "",
+      heading: "",
+      subheading: "",
+      buttonName: "",
       images: [],
     });
     setErrors({});
@@ -418,6 +433,42 @@ const BannerManagement = () => {
                         {errors.title && (
                           <small className="text-danger">{errors.title}</small>
                         )}
+                      </div>
+
+                      <div className="col-12">
+                        <label className="form-label">Heading</label>
+                        <input
+                          type="text"
+                          name="heading"
+                          className="form-control"
+                          value={formData.heading}
+                          onChange={handleInputChange}
+                          disabled={isLoading}
+                        />
+                      </div>
+
+                      <div className="col-12">
+                        <label className="form-label">Sub Heading</label>
+                        <input
+                          type="text"
+                          name="subheading"
+                          className="form-control"
+                          value={formData.subheading}
+                          onChange={handleInputChange}
+                          disabled={isLoading}
+                        />
+                      </div>
+
+                      <div className="col-12">
+                        <label className="form-label">Button Name</label>
+                        <input
+                          type="text"
+                          name="buttonName"
+                          className="form-control"
+                          value={formData.buttonName}
+                          onChange={handleInputChange}
+                          disabled={isLoading}
+                        />
                       </div>
 
                       <div className="col-12">

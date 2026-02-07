@@ -175,6 +175,10 @@ import CrmOrderPage from "./pages/CrmOrderPage";
 import CrmorderListPage from "./pages/CrmOrderListPage";
 import CrmListPage from "./pages/CrmUserListPage";
 
+import CancelledOrders from "./pages/CancelledOrderPage";
+import VendorPurchasePage from "./pages/VendorPurchasePage";
+import ProductReportPage from "./pages/ProductReportPage";
+
 
 function App() {
   return (
@@ -213,6 +217,7 @@ function App() {
         <Route exact path="/attribute" element={<AttributePageRoutes />} />
         <Route exact path="/management-team" element={<ManageMentPage />} />
         <Route exact path="/global-report" element={<GlobalReportPage />} />
+        <Route exact path="/product-report" element={<ProductReportPage />} />
 
         <Route exact path="/order-list" element={<WholesaleOrders />} />
         <Route exact path="/retailer-order-list" element={<RetailerleOrders />} />
@@ -237,6 +242,7 @@ function App() {
         />
 
         <Route exact path="/customer-order" element={<CustomerOrders />} />
+        <Route exact path="/cancelled-order" element={<CancelledOrders />} />
         <Route
           exact
           path="/customer-order-histroy"
@@ -460,7 +466,9 @@ function App() {
           element={<CustomerReportpage />}
         />
         <Route exact path="/vendor-list" element={<VendorList />} />
-        <Route exact path="/vendor-order-list" element={<VendorOrderList />} />
+        {/* <Route exact path="/vendor-order-list" element={<VendorOrderList />} /> */}
+        <Route exact path="/vendor-purchase" element={<VendorPurchasePage />} />
+        <Route exact path="/vendor-order-list" element={<VendorPurchasePage />} />
         <Route
           exact
           path="/vendor-add-order-list"
@@ -502,6 +510,7 @@ function App() {
         />
         <Route exact path="/salesman-report" element={<SalesmanReport />} />
         <Route exact path="/pos-new" element={<PosNewList />} />
+        <Route exact path="/sales-cash-settlement" element={<SalesCashSettlement />} />
 
         {/* <Route exact path='/nalsuvai/public/login' element={<LoginPage />} /> */}
         <Route exact path="/" element={<LoginPage />} />

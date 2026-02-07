@@ -40,6 +40,7 @@ export default function ProductDetailsModal({ show, onHide, product }) {
             // { label: 'Delivery', value: product.delivery || '-' },
             { label: 'Refundable', value: product.refundable ? 'Yes' : 'No' },
             { label: 'Tag / Label', value: product.tagAndLabel || '-' },
+            { label: 'Trending Product', value: product.isTrending ? 'Yes' : 'No' },
             { label: 'Low Stock Alert', value: product.lowStockAlert ? 'Yes' : 'No' },
             { label: 'Low Stock Quantity', value: product.lowStockQuantity || '-' },
             // ... other basic fields ...
@@ -50,8 +51,8 @@ export default function ProductDetailsModal({ show, onHide, product }) {
             </div>
           ))}
 
-          {/* Attributes Section */}
-          {['wholesaler', 'customer'].map((type) => {
+          {/* Attributes Section (Customer Only) */}
+          {['customer'].map((type) => {
             const attributeDetails = product[`${type}AttributeDetails`] || [];
             const attributeData = product[`${type}Attribute`] || {};
             const rowData = attributeData.rowData || [];
@@ -72,30 +73,12 @@ export default function ProductDetailsModal({ show, onHide, product }) {
                           <th key={attr.attributeId}>{attr.name || 'Attribute'}</th>
                         ))}
 
-                        {type === 'wholesaler' ? (
-                          <>
-                            <th>SKU</th>
-                            <th>Stock</th>
-                            <th>Max Limit</th>
-                            <th>Shipping Weight</th>
-                            <th>MRP</th>
-                            <th>Silver Price</th>
-                            <th>Gold Price</th>
-                            <th>Platinum Price</th>
-                          </>
-                        ) : (
-                          <>
-                            <th>SKU</th>
-                            <th>Stock</th>
-                            <th>Max Limit</th>
-                            <th>Shipping Weight</th>
-                             <th>MRP</th>
-                             <th>Price</th>
-                            <th>Silver Price</th>
-                            <th>Gold Price</th>
-                            <th>Platinum Price</th>
-                          </>
-                        )}
+                        <th>SKU</th>
+                        <th>Stock</th>
+                        <th>Max Limit</th>
+                        <th>Shipping Weight</th>
+                        <th>MRP</th>
+                        <th>Price</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -112,30 +95,12 @@ export default function ProductDetailsModal({ show, onHide, product }) {
                             );
                           })}
 
-                          {type === 'wholesaler' ? (
-                            <>
-                              <td>{row.sku || '-'}</td>
-                              <td>{row.stock || '-'}</td>
-                              <td>{row.maxLimit || '-'}</td>
-                              <td>{row.shippingWeight || '-'}</td>
-                              <td>{row.wholesalermrp || '-'}</td>
-                              <td>{row.silver || '-'}</td>
-                              <td>{row.gold || '-'}</td>
-                              <td>{row.platinum || '-'}</td>
-                            </>
-                          ) : (
-                            <>
-                              <td>{row.sku || '-'}</td>
-                              <td>{row.stock || '-'}</td>
-                              <td>{row.maxLimit || '-'}</td>
-                              <td>{row.shippingWeight || '-'}</td>
-                              <td>{row.customermrp || '-'}</td>
-                              <td>{row.price || '-'}</td>
-                              <td>{row.silver || '-'}</td>
-                              <td>{row.gold || '-'}</td>
-                              <td>{row.platinum || '-'}</td>
-                            </>
-                          )}
+                          <td>{row.sku || '-'}</td>
+                          <td>{row.stock || '-'}</td>
+                          <td>{row.maxLimit || '-'}</td>
+                          <td>{row.shippingWeight || '-'}</td>
+                          <td>{row.customermrp || '-'}</td>
+                          <td>{row.price || '-'}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -144,6 +109,31 @@ export default function ProductDetailsModal({ show, onHide, product }) {
               </div>
             );
           })}
+
+          {/* Specifications Section */}
+          {product.specifications && product.specifications.length > 0 && (
+            <div className="mt-4">
+              <h6 className="text-muted text-uppercase fw-bold">Specifications</h6>
+              <div className="table-responsive">
+                <table className="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Specification</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.specifications.map((spec, index) => (
+                      <tr key={index}>
+                        <td>{spec.key}</td>
+                        <td>{spec.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       </Modal.Body>
       <Modal.Footer className="bg-light">

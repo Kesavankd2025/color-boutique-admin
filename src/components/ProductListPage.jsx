@@ -106,12 +106,7 @@ export default function ProductListPage() {
         accessorKey: "subCategoryName",
         size: 200,
       },
-      {
-        header: "Child Category",
-        accessorKey: "childCategoryName",
-        size: 150,
-        cell: (info) => info.getValue() || "-",
-      },
+
       {
         header: "Brand",
         accessorKey: "brandName",
@@ -139,54 +134,54 @@ export default function ProductListPage() {
 
       ...(havePermissions
         ? [
-            {
-              header: "Actions",
-              size: 160,
-              cell: (info) => {
-                const productId = info.row.original._id;
-                return (
-                  <div className="d-flex align-items-center gap-10">
-                    {canView && (
-                      <button
-                        type="button"
-                        className="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                        onClick={() => {
-                          setSelectedProduct(info.row.original);
-                          setModalOpen(true);
-                        }}
-                      >
-                        <Icon
-                          icon="majesticons:eye-line"
-                          className="icon text-xl"
-                        />
-                      </button>
-                    )}
-                    {canEdit && (
-                      <button
-                        type="button"
-                        className="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                        onClick={() => handleEdit(productId)}
-                      >
-                        <Icon icon="lucide:edit" className="menu-icon" />
-                      </button>
-                    )}
-                    {canDelete && (
-                      <button
-                        type="button"
-                        className="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                        onClick={() => handleRemoveRow(productId)}
-                      >
-                        <Icon
-                          icon="fluent:delete-24-regular"
-                          className="menu-icon"
-                        />
-                      </button>
-                    )}
-                  </div>
-                );
-              },
+          {
+            header: "Actions",
+            size: 160,
+            cell: (info) => {
+              const productId = info.row.original._id;
+              return (
+                <div className="d-flex align-items-center gap-10">
+                  {canView && (
+                    <button
+                      type="button"
+                      className="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                      onClick={() => {
+                        setSelectedProduct(info.row.original);
+                        setModalOpen(true);
+                      }}
+                    >
+                      <Icon
+                        icon="majesticons:eye-line"
+                        className="icon text-xl"
+                      />
+                    </button>
+                  )}
+                  {canEdit && (
+                    <button
+                      type="button"
+                      className="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                      onClick={() => handleEdit(productId)}
+                    >
+                      <Icon icon="lucide:edit" className="menu-icon" />
+                    </button>
+                  )}
+                  {canDelete && (
+                    <button
+                      type="button"
+                      className="remove-item-btn bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
+                      onClick={() => handleRemoveRow(productId)}
+                    >
+                      <Icon
+                        icon="fluent:delete-24-regular"
+                        className="menu-icon"
+                      />
+                    </button>
+                  )}
+                </div>
+              );
             },
-          ]
+          },
+        ]
         : []),
     ],
     [pageIndex, pageSize]
@@ -308,7 +303,7 @@ export default function ProductListPage() {
               <th>Product Name</th>
               <th>Category</th>
               <th>Sub Category</th>
-              <th>Child Category</th>
+
               <th>Brand</th>
               {/* <th>Price</th> */}
               <th>Status</th>
@@ -323,7 +318,7 @@ export default function ProductListPage() {
                 <td>{product.productName}</td>
                 <td>{product.categoryName}</td>
                 <td>{product.subCategoryName}</td>
-                <td>{product.childCategoryName || "-"}</td>
+
                 <td>{product.brandName}</td>
                 {/* <td>{product.price}</td> */}
                 <td>

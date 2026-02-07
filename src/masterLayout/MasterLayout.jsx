@@ -324,22 +324,18 @@ const MasterLayout = ({ children }) => {
                 </NavLink>
               </li>
             )}
+
+            {/* Website (Banner) */}
             {canViewWebsite && (
               <li className="dropdown">
                 <Link to="#">
-                  <Icon icon="mdi:cart-arrow-right" className="menu-icon" />
-
+                  <Icon icon="mdi:web" className="menu-icon" />
                   <span>Website</span>
                 </Link>
                 <ul className="sidebar-submenu">
                   {canViewHomePage && (
                     <li>
-                      <NavLink
-                        to="/home-page"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
+                      <NavLink to="/home-page" className={(navData) => navData.isActive ? "active-page" : ""}>
                         Home Banner
                       </NavLink>
                     </li>
@@ -347,1233 +343,103 @@ const MasterLayout = ({ children }) => {
                 </ul>
               </li>
             )}
+
+            {/* Catalog */}
             {canViewCatalog && (
               <li className="dropdown">
                 <Link to="#">
-                  <Icon icon="mdi:cart-arrow-right" className="menu-icon" />
-
+                  <Icon icon="bx:category" className="menu-icon" />
                   <span>Catalog</span>
                 </Link>
                 <ul className="sidebar-submenu">
                   {canViewCategories && (
-                    <li>
-                      <NavLink
-                        to="/category"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Categories
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/category" className={(navData) => navData.isActive ? "active-page" : ""}>Categories</NavLink></li>
                   )}
                   {canViewAttributes && (
-                    <li>
-                      <NavLink
-                        to="/attribute"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Attributes
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/attribute" className={(navData) => navData.isActive ? "active-page" : ""}>Attributes</NavLink></li>
                   )}
                   {canViewBrands && (
-                    <li>
-                      <NavLink
-                        to="/brand"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Brands
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/brand" className={(navData) => navData.isActive ? "active-page" : ""}>Brands</NavLink></li>
+                  )}
+                  {canViewTaxList && (
+                    <li><NavLink to="/tax-list" className={(navData) => navData.isActive ? "active-page" : ""}>Tax</NavLink></li>
                   )}
                   {canViewProducts && (
-                    <li>
-                      <NavLink
-                        to="/product"
-                        className={(navData) =>
-                          navData.isActive || location.pathname === '/create-product' ? "active-page" : ""
-                        }
-                      >
-                        Products
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/product" className={(navData) => navData.isActive ? "active-page" : ""}>Products</NavLink></li>
                   )}
-                  {canViewOfferCreations && (
-                    <li>
-                      <NavLink
-                        to="/offer-creations"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Offers
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewRootCreation && (
-                    <li>
-                      <NavLink
-                        to="/root-creation"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Route  Creation
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewCouponCreation && (
-                    <li>
-                      <NavLink
-                        to="/coupon-creation"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Coupon code
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* {canViewShopType && ( */}
-                  <li>
-                    <NavLink
-                      to="/shop-type"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Shop Type
-                    </NavLink>
-                  </li>
-                  {/* )} */}
-                  {/* {canViewVehicles && ( */}
-                  <li>
-                    <NavLink
-                      to="/vehicle-list"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Vehicles
-                    </NavLink>
-                  </li>
-                  {/* )} */}
-                  {/* {canViewBankDetails && ( */}
-                  <li>
-                    <NavLink
-                      to="/Bank-details"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Bank Details
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/expense-type"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Expense type
-                    </NavLink>
-                  </li>
-                  {/* )} */}
                 </ul>
               </li>
             )}
+
+            {/* Orders */}
             {canViewOrders && (
               <li className="dropdown">
                 <Link to="#">
                   <Icon icon="mdi:order-bool-ascending" className="menu-icon" />
-
                   <span>Orders</span>
                 </Link>
                 <ul className="sidebar-submenu">
-                  {canViewOrderList && (
-                    <li>
-                      <NavLink
-                        to="/order-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Wholesale Orders
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewRetailerOrderList && (
-                    <li>
-                      <NavLink
-                        to="/retailer-order-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Retailer Orders
-                      </NavLink>
-                    </li>
-                  )}
                   {canViewCustomerOrder && (
-                    <li>
-                      <NavLink
-                        to="/customer-order"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Customer Orders
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewPosOrder && (
-                    <li>
-                      <NavLink
-                        to="/pos-order"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        POS Orders
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/customer-order" className={(navData) => navData.isActive ? "active-page" : ""}>Customer Orders</NavLink></li>
                   )}
                   {canViewReturnRequest && (
-                    <li>
-                      <NavLink
-                        to="/return-request"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Return Request
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/return-request" className={(navData) => navData.isActive ? "active-page" : ""}>Return Orders</NavLink></li>
                   )}
-                  {canViewOrderReport && (
-                    <li>
-                      <NavLink
-                        to="/order-report"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Order Reports
-                      </NavLink>
-                    </li>
-                  )}
+                  <li><NavLink to="/cancelled-order" className={(navData) => navData.isActive ? "active-page" : ""}>Cancelled Orders</NavLink></li>
                 </ul>
               </li>
             )}
+
             {/* Users */}
             {canViewUsers && (
               <li className="dropdown">
                 <Link to="#">
-                  {/* <Icon icon="mdi:cart-arrow-right" className="menu-icon" /> */}
                   <Icon icon="bx:user" className="menu-icon" />
-
                   <span>Users</span>
                 </Link>
                 <ul className="sidebar-submenu">
                   {canViewUsersList && (
-                    <li>
-                      <NavLink
-                        to="/users-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        User List
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/users-list" className={(navData) => navData.isActive ? "active-page" : ""}>User List</NavLink></li>
                   )}
                   {canViewUserRolePermission && (
-                    <li>
-                      <NavLink
-                        to="/user-role-permission"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        User Role & Permission
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/user-role-permission" className={(navData) => navData.isActive ? "active-page" : ""}>User Role & Permission</NavLink></li>
                   )}
-                  {/* {canViewPasswordManagement && (
-                    <li>
-                      <NavLink
-                        to="/password-management"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Password Management
-                      </NavLink>
-                    </li>
-                  )} */}
-                  {canViewUserActivityLog && (
-                    <li>
-                      <NavLink
-                        to="/user-activity-log"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        User Activity Logs
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* {canViewUsersReport && (
-                    <li>
-                      <NavLink
-                        to="/users-report"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Users Reports
-                      </NavLink>
-                    </li>
-                  )} */}
-                </ul>
-              </li>
-            )}
-            {canViewPOS && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:point-of-sale" className="menu-icon" />
-
-                  <span>POS</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewPosNew && (
-                    <li>
-                      <NavLink
-                        to="/pos-new"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        POS
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewPosOrderHistroy && (
-                    <li>
-                      <NavLink
-                        to="/pos-order-histroy"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        POS Order Histroy
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {canViewCRM && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:point-of-sale" className="menu-icon" />
-
-                  <span>CRM</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewCrmUserList && (
-                    <li>
-                      <NavLink
-                        to="/crm-user-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        CRM User List
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewCrmNew && (
-                    <li>
-                      <NavLink
-                        to="/crm-order"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        CRM Order
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewCrmOrderHistroy && (
-                    <li>
-                      <NavLink
-                        to="/crm-order-histroy"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        CRM Order Histroy
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {canViewCustomer && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:account" className="menu-icon" />
-
-
-                  <span>Customer</span>
-                </Link>
-                <ul className="sidebar-submenu">
                   {canViewCustomerList && (
-                    <li>
-                      <NavLink
-                        to="/customer-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Customer List
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewCustomerOrderHistroy && (
-                    <li>
-                      <NavLink
-                        to="/customer-order-histroy"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Customer Order Histroy
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewCustomerReports && (
-                    <li>
-                      <NavLink
-                        to="/customer-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Customer Reports
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {canViewWholesalers && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:cart-percent" className="menu-icon" />
-
-                  <span>Wholesalers</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewWholesalerList && (
-                    <li>
-                      <NavLink
-                        to="/wholesaler-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Wholesaler List
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* <li>
-                  <NavLink
-                    to='/wholesale-assign-salesman'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-
-                    Assign Salesman
-                  </NavLink>
-                </li> */}
-                  {canViewWholesalerOrderHistory && (
-                    <li>
-                      <NavLink
-                        to="/wholesaler-order-history"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Wholesaler Orders
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewWholesalerCreditManagement && (
-                    <li>
-                      <NavLink
-                        to="/wholesaler-credit-management"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Credit Management
-                      </NavLink>
-                    </li>
-                  )}
-
-                  {/* <li>
-                  <NavLink
-                    to='/wholesaler-adjust-credit-limit'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-
-                    Adjust Credit Limit
-                  </NavLink>
-                </li> */}
-                  {canViewWholesalerPaymentDues && (
-                    <li>
-                      <NavLink
-                        to="/wholesaler-payment-dues"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Payment & Dues
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewWholesalerReports && (
-                    <li>
-                      <NavLink
-                        to="/wholesaler-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Wholesaler Reports
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/customer-list" className={(navData) => navData.isActive ? "active-page" : ""}>Customer List</NavLink></li>
                   )}
                 </ul>
               </li>
             )}
 
-            {/* retailer */}
-            {canViewRetailers && (
-              <li className="dropdown">
-                <Link to="#">
-                  {/* <Icon icon="mdi:order-bool-ascending" className="menu-icon" /> */}
-                  <Icon icon="bx:user-voice" className="menu-icon" />
-
-                  <span>Retailers</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewRetailersList && (
-                    <li>
-                      <NavLink
-                        to="/retailers-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Retailers List
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* <li>
-                  <NavLink
-                    to='/retailer-assign-salesman'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-
-                    Assign Salesman
-                  </NavLink>
-                </li> */}
-                  {canViewRetailerOrderHistory && (
-                    <li>
-                      <NavLink
-                        to="/retailer-order-history"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Retailer Orders
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewRetailerCreditManagement && (
-                    <li>
-                      <NavLink
-                        to="/retailer-credit-management"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Credit Management
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* <li>
-                  <NavLink
-                    to='/retailer-adjust-credit-limit'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-
-                    Adjust Credit Limit
-                  </NavLink>
-                </li> */}
-                  {canViewRetailerPaymentDues && (
-                    <li>
-                      <NavLink
-                        to="/retailer-payment-dues"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Payment & Dues
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewRetailerReports && (
-                    <li>
-                      <NavLink
-                        to="/retailer-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Retailer Reports
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
+            {/* Vendor */}
             {canViewVendors && (
               <li className="dropdown">
                 <Link to="#">
-                  <Icon icon="mdi:store-cog-outline" className="menu-icon" />
-
-                  <span>Vendors</span>
+                  <Icon icon="mdi:store" className="menu-icon" />
+                  <span>Vendor</span>
                 </Link>
                 <ul className="sidebar-submenu">
                   {canViewVendorList && (
-                    <li>
-                      <NavLink
-                        to="/vendor-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Vendor List
-                      </NavLink>
-                    </li>
+                    <li><NavLink to="/vendor-list" className={(navData) => navData.isActive ? "active-page" : ""}>Vendor List</NavLink></li>
                   )}
-                  {canViewVendorOrderList && (
-                    <li>
-                      <NavLink
-                        to="/vendor-order-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Vendor Purchase List
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* <li>
-                  <NavLink
-                    to='/vendor-order-history'
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-
-                    Vendor Order History
-                  </NavLink>
-                </li> */}
-                  {canViewVendorPayments && (
-
-                    <li>
-                      <NavLink
-                        to="/vendor-payments"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Vendor Payments
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewVendorPaymentDues && (
-
-                    <li>
-                      <NavLink
-                        to="/vendor-payment-dues"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Payment & Dues
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewVendorReports && (
-                    <li>
-                      <NavLink
-                        to="/vendor-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Vendor Reports
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {canViewSalesman && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:account-check" className="menu-icon" />
-
-                  <span>Salesman</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewSalesmanList && (
-                    <li>
-                      <NavLink
-                        to="/salesman-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Salesman List
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewSalesmanTargetsIncentives && (
-                    <li>
-                      <NavLink
-                        to="/salesman-targets-incentives"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Targets & Incentives
-                      </NavLink>
-                    </li>
-                  )}
-
-                  {canViewSalesCashSettlement && (
-                    <li>
-                      <NavLink
-                        to="/sales-cash-settlement"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Cash Settlements
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewSalesmanPerformance && (
-                    <li>
-                      <NavLink
-                        to="/salesman-performance"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Salesman Performance
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewSalesmanOrderHistory && (
-                    <li>
-                      <NavLink
-                        to="/salesman-order-history"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Salesman Order History
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewSalesmanReport && (
-                    <li>
-                      <NavLink
-                        to="/salesman-report"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Salesman Reports
-                      </NavLink>
-                    </li>
-                  )}
-
+                  <li><NavLink to="/vendor-purchase" className={(navData) => navData.isActive ? "active-page" : ""}>Vendor Purchase</NavLink></li>
                 </ul>
               </li>
             )}
 
-            {/* delivery */}
-            {canViewDelivery && (
-              <li className="dropdown">
-                <Link to="#">
-                  {/* <Icon icon="mdi:order-bool-ascending" className="menu-icon" /> */}
-                  <Icon icon="bx:building-house" className="menu-icon" />
-
-                  <span>Delivery</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewDeliveryList && (
-                    <li>
-                      <NavLink
-                        to="/delivery-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Delivery List
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* <li>
-                  <NavLink
-                    to="/assign-delivery-person"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Assign Delivery Person
-                  </NavLink>
-                </li> */}
-                  {canViewDeliveryTrackingUpdates && (
-                    <li>
-                      <NavLink
-                        to="/delivery-tracking-updates"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Delivery Tracking Updates
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewDeliveryPersonList && (
-                    <li>
-                      <NavLink
-                        to="/delivery-person-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Delivery Person List
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* {canViewDeliveryPerformancePayroll && (
-                    <li>
-                      <NavLink
-                        to="/delivery-performance-payroll"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Delivery Performance
-                      </NavLink>
-                    </li>
-                  )} */}
-                  {canViewDeliveryReports && (
-                    <li>
-                      <NavLink
-                        to="/delivery-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Delivery Reports
-                      </NavLink>
-                    </li>
-                  )}
-                  <li>
-                    <NavLink
-                      to="/delivery-man-request"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Delivery Man Request
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/delivery-man-complaint"
-                      className={(navData) =>
-                        navData.isActive ? "active-page" : ""
-                      }
-                    >
-                      Delivery Man Complaint
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
-            )}
-            {canViewPaymentAndCredit && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="mdi:book-open-variant" className="menu-icon" />
-
-                  <span>Payment & Credit</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewPaymentTransactionList && (
-                    <li>
-                      <NavLink
-                        to="/add-payment-transaction"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Pay & Collect
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewPaymentTransactionList && (
-                    <li>
-                      <NavLink
-                        to="/payment-transaction-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Payment Transaction List
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewRecordManualPayment && (
-                    <li>
-                      <NavLink
-                        to="/record-manual-payment"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Record Manual Payment
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewOutstandingPayment && (
-                    <li>
-                      <NavLink
-                        to="/outstanding-payment"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Outstanding Payments
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewProcessRefund && (
-                    <li>
-                      <NavLink
-                        to="/process-refund"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Process Refund
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewPaymentCreditReport && (
-                    <li>
-                      <NavLink
-                        to="/payment-credit-report"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Payments & Credit Reports
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {/* warehouse */}
-            {/* <li className="dropdown">
+            {/* Reports */}
+            <li className="dropdown">
               <Link to="#">
-                <Icon icon="mdi:warehouse" className="menu-icon" />
-
-                <span>Warehouse</span>
-              </Link>
-              <ul className="sidebar-submenu">
-                <li>
-                  <NavLink
-                    to="/warehouse-list"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Warehouse List
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    to="/stock-transfer-management"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Stock Transfer Management
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    to="/damaged-goods-management"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Damaged Goods Management
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    to="/warehouse-reports"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Warehouse Reports
-                  </NavLink>
-                </li>
-              </ul>
-            </li> */}
-            {/* Repacking */}
-
-            {/* <li className="dropdown">
-              <Link to="#">
-                <Icon icon="bx:package" className="menu-icon" />
-
-                <span>Repacking</span>
-              </Link>
-              <ul className="sidebar-submenu">
-                <li>
-                  <NavLink
-                    to="/repacking-order-list"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Repacking Order List
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    to="/repacking-wastage-update"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Repacking and Wastage Update
-                  </NavLink>
-                </li>
-
-                <li>
-                  <NavLink
-                    to="/repacking-report"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Repacking Reports
-                  </NavLink>
-                </li>
-              </ul>
-            </li> */}
-
-            {/* Inventory */}
-            {canViewInventory && (
-              <li className="dropdown">
-                <Link to="#">
-                  {/* <Icon icon="mdi:cart-arrow-right" className="menu-icon" /> */}
-                  <Icon icon="bx:list-plus" className="menu-icon" />
-
-                  <span>Inventory</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewAddStock && (
-                    <li>
-                      <NavLink
-                        to="/add-stock"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Add stock
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewInventoryList && (
-                    <li>
-                      <NavLink
-                        to="/inventory-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Inventory List
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewInventoryLog && (
-                    <li>
-                      <NavLink
-                        to="/inventory-log"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Inventory Log
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewInventoryReports && (
-                    <li>
-                      <NavLink
-                        to="/inventory-reports"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Inventory Reports
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {/* Petty Cash */}
-            {canViewPettyCash && (
-              <li className="dropdown">
-                <Link to="#">
-                  <Icon icon="bx:receipt" className="menu-icon" />
-                  <span>Petty Cash</span>
-                </Link>
-                <ul
-                  className="sidebar-submenu"
-                >
-                  {canViewPettycashTransactionList && (
-                    <li>
-                      <NavLink
-                        to="/pettycash-management"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Petty Cash Management
-                      </NavLink>
-                    </li>
-                  )}
-                  {canViewPettycashTransactionList && (
-                    <li>
-                      <NavLink
-                        to="/pettycash-transaction-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Petty Cash Transaction
-                      </NavLink>
-                    </li>
-                  )}
-                  {/* {canViewPettyCashReport && (
-                    <li>
-                      <NavLink
-                        to="/petty-cash-report"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Petty Cash Reports
-                      </NavLink>
-                    </li>
-                  )} */}
-                </ul>
-              </li>
-            )}
-
-            {/* Tax */}
-            {canViewTax && (
-              <li className="dropdown">
-                <Link to="#">
-                  {/* <Icon icon="mdi:cart-arrow-right" className="menu-icon" /> */}
-                  <Icon icon="fa-solid:file-invoice" className="menu-icon" />
-
-                  <span>Tax</span>
-                </Link>
-                <ul className="sidebar-submenu">
-                  {canViewTaxList && (
-                    <li>
-                      <NavLink
-                        to="/tax-list"
-                        className={(navData) =>
-                          navData.isActive ? "active-page" : ""
-                        }
-                      >
-                        Tax List
-                      </NavLink>
-                    </li>
-                  )}
-                </ul>
-              </li>
-            )}
-            {/* <li className="dropdown">
-              <Link to="#">
-                <Icon icon="mdi:cart-arrow-right" className="menu-icon" />
-
+                <Icon icon="mdi:chart-bar" className="menu-icon" />
                 <span>Reports</span>
               </Link>
               <ul className="sidebar-submenu">
-                <li>
-                  <NavLink
-                    to="/global-report"
-                    className={(navData) =>
-                      navData.isActive ? "active-page" : ""
-                    }
-                  >
-                    Product Report
-                  </NavLink>
-                </li>
+                <li><NavLink to="/product-report" className={(navData) => navData.isActive ? "active-page" : ""}>Product Reports</NavLink></li>
               </ul>
-            </li> */}
+            </li>
           </ul>
-        </div>
-      </aside>
+        </div >
+      </aside >
 
       <main
         className={sidebarActive ? "dashboard-main active" : "dashboard-main"}
@@ -1717,7 +583,7 @@ const MasterLayout = ({ children }) => {
           </div>
         </footer>
       </main>
-    </section>
+    </section >
   );
 };
 

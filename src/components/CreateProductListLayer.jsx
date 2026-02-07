@@ -94,6 +94,8 @@ const CreateProductListLayer = () => {
     packingType: "",
     isIncentive: false,
     showToLineman: false,
+    isTrending: false,
+    specifications: [],
   });
   const [formData, setFormData] = useState(initialData);
   const [categoryData, setCategories] = useState([]);
@@ -281,25 +283,25 @@ const CreateProductListLayer = () => {
 
         wholesalerAttribute: {
           attributeId: resp.wholesalerAttribute?.attributeId || [],
-          rowData: resp.wholesalerAttribute?.rowData.map((row) => ({
+          rowData: (resp.wholesalerAttribute?.rowData || []).map((row) => ({
             ...row,
             shippingWeight: row.shippingWeight || "",
             wholesalermrp: row.wholesalermrp || "",
             silver: row.silver || "",
             gold: row.gold || "",
             platinum: row.platinum || "",
-          })) || [],
+          })),
         },
 
         customerAttribute: {
           attributeId: resp.customerAttribute?.attributeId || [],
           rowData:
-            resp.customerAttribute?.rowData.map((row) => ({
+            (resp.customerAttribute?.rowData || []).map((row) => ({
               ...row,
               shippingWeight: row.shippingWeight || "",
               customermrp: row.customermrp || "",
               price: row.price || "",
-            })) || [],
+            })),
         },
 
         metaTitle: resp.metaTitle || "",
@@ -315,6 +317,8 @@ const CreateProductListLayer = () => {
         packingType: resp.packingType || "",
         isIncentive: resp.isIncentive || false,
         showToLineman: resp.showToLineman || false,
+        isTrending: resp.isTrending || false,
+        specifications: resp.specifications || [],
       });
     }
     setLoading(false);
@@ -733,13 +737,6 @@ const CreateProductListLayer = () => {
     checkRequired(formData.slug, "slug", "Slug is Required");
 
     // Check if at least one attribute is selected
-    if (
-      formData.isApplicableToWholesaler &&
-      formData.wholesalerAttribute.attributeId.length === 0
-    ) {
-      newErrors["wholesalerAttribute"] =
-        "Please select at least one wholesaler attribute";
-    }
 
     if (
       formData.isApplicableToCustomer &&
@@ -779,46 +776,6 @@ const CreateProductListLayer = () => {
       } else if (qty <= 0) {
         newErrors.quantityPerPack = "Quantity must be greater than 0";
       }
-    }
-
-    if (
-      formData.isApplicableToWholesaler &&
-      formData.wholesalerAttribute.rowData.length > 0
-    ) {
-      const wholesalerFields = [
-        { field: "sku", label: "SKU" },
-        { field: "stock", label: "Stock", isNum: true },
-        { field: "maxLimit", label: "Max Limit", isNum: true },
-        { field: "shippingWeight", label: "Shipping Weight", isNum: true },
-        { field: "wholesalermrp", label: "MRP", isNum: true },
-        { field: "silver", label: "Silver price", isNum: true },
-        { field: "gold", label: "Gold price", isNum: true },
-        { field: "platinum", label: "Platinum price", isNum: true },
-      ];
-
-      formData.wholesalerAttribute.rowData.forEach((row, rowIndex) => {
-        // Validate all fields
-        wholesalerFields.forEach(({ field, label, isNum }) => {
-          const value = row[field];
-          if (!value || value.toString().trim() === "") {
-            newErrors[`wholesaler_${field}_${rowIndex}`] = `${label} is required`;
-          } else if (isNum && isNaN(Number(value))) {
-            newErrors[`wholesaler_${field}_${rowIndex}`] = `${label} must be a number`;
-          } else if (isNum && Number(value) < 0) {
-            newErrors[`wholesaler_${field}_${rowIndex}`] = `${label} cannot be negative`;
-          }
-        });
-
-        // Validate dynamic attribute columns
-        wholesalerDynamicColum.forEach((col) => {
-          if (!row[col] || row[col].toString().trim() === "") {
-            newErrors[`wholesaler_${col}_${rowIndex}`] = `${col} is required`;
-          }
-        });
-      });
-    } else if (formData.isApplicableToWholesaler) {
-      newErrors["wholesalerAttributeTable"] =
-        "Please generate and fill wholesaler attribute table";
     }
 
     // Customer attribute table validation
@@ -927,6 +884,7 @@ const CreateProductListLayer = () => {
       isApplicableToCustomer: false,
       isApplicableToWholesaler: false,
       lowStockQuantity: 0,
+      specifications: [],
     });
     setTimeout(() => {
       navigate("/product");
@@ -1033,6 +991,15 @@ const CreateProductListLayer = () => {
           "showToLineman",
           formData.showToLineman === true
         );
+        formDataToSend.append(
+          "showToLineman",
+          formData.showToLineman === true
+        );
+        formDataToSend.append("isTrending", String(formData.isTrending === true));
+        formDataToSend.append(
+          "specifications",
+          JSON.stringify(formData.specifications)
+        );
         console.log("formDataToSend", formDataToSend);
 
         const response = await productApi.productcreate(formDataToSend);
@@ -1101,24 +1068,6 @@ const CreateProductListLayer = () => {
         );
 
         formDataToSend.append(
-          "applicableForWholesale",
-          String(formData.isApplicableToWholesaler === true)
-        );
-
-        formDataToSend.append(
-          "wholesalerDiscount",
-          String(Number(formData.wholeSalerDiscunt))
-        );
-        formDataToSend.append(
-          "wholesalerTax",
-          String(Number(formData.wholeSalerTax))
-        );
-
-        formDataToSend.append(
-          "wholesalerAttribute",
-          JSON.stringify(formData.wholesalerAttribute)
-        );
-        formDataToSend.append(
           "customerAttribute",
           JSON.stringify(formData.customerAttribute)
         );
@@ -1137,6 +1086,11 @@ const CreateProductListLayer = () => {
         formDataToSend.append(
           "showToLineman",
           String(formData.showToLineman === true)
+        );
+        formDataToSend.append("isTrending", String(formData.isTrending === true));
+        formDataToSend.append(
+          "specifications",
+          JSON.stringify(formData.specifications)
         );
 
         formDataToSend.append("id", selector.id);
@@ -1605,6 +1559,93 @@ const CreateProductListLayer = () => {
                                 />
                               </div>
                             )}
+                          </div>
+
+                          <div className="col-lg-4 col-md-6 mb-3">
+                            <div className="d-flex align-items-center">
+                              <label
+                                htmlFor="isTrending"
+                                className="form-label mb-0 me-3"
+                                style={{ whiteSpace: "nowrap" }}
+                              >
+                                Trending Product
+                              </label>
+
+                              <input
+                                id="isTrending"
+                                name="isTrending"
+                                type="checkbox"
+                                className="form-check-input"
+                                checked={formData.isTrending}
+                                onChange={handleChangeCheckBox}
+                              />
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Specifications Section */}
+                        <div className="row mb-4">
+                          <div className="col-12">
+                            <div className="d-flex justify-content-between align-items-center mb-3">
+                              <h5 className="font-size-14 mb-0">Product Specifications (Optional)</h5>
+                              <Button
+                                variant="light"
+                                color="blue"
+                                leftSection={<IconPlus size={16} />}
+                                onClick={() => {
+                                  setFormData(prev => ({
+                                    ...prev,
+                                    specifications: [...prev.specifications, { key: "", value: "" }]
+                                  }));
+                                }}
+                              >
+                                Add Specification
+                              </Button>
+                            </div>
+
+                            {formData.specifications.map((spec, index) => (
+                              <div className="row align-items-center mb-2" key={index}>
+                                <div className="col-5">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Specification Name (e.g. Fabric)"
+                                    value={spec.key}
+                                    onChange={(e) => {
+                                      const newSpecs = [...formData.specifications];
+                                      newSpecs[index].key = e.target.value;
+                                      setFormData(prev => ({ ...prev, specifications: newSpecs }));
+                                    }}
+                                  />
+                                </div>
+                                <div className="col-5">
+                                  <input
+                                    type="text"
+                                    className="form-control"
+                                    placeholder="Value (e.g. Cotton)"
+                                    value={spec.value}
+                                    onChange={(e) => {
+                                      const newSpecs = [...formData.specifications];
+                                      newSpecs[index].value = e.target.value;
+                                      setFormData(prev => ({ ...prev, specifications: newSpecs }));
+                                    }}
+                                  />
+                                </div>
+                                <div className="col-2">
+                                  <ActionIcon
+                                    color="red"
+                                    onClick={() => {
+                                      setFormData(prev => ({
+                                        ...prev,
+                                        specifications: prev.specifications.filter((_, i) => i !== index)
+                                      }));
+                                    }}
+                                  >
+                                    <IconTrash size={16} />
+                                  </ActionIcon>
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </div>
                       </div>
