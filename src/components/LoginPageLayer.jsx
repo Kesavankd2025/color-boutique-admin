@@ -651,7 +651,7 @@ export default function LoginPageLayer() {
             <div className="col-lg-12">
               <div className="text-center p-4">
                 {/* Footer Links */}
-                <div className="footer-links mb-2">
+                {/* <div className="footer-links mb-2">
                   <a href="/terms-and-conditions" className="text-muted text-decoration-none mx-2">
                     Terms and Conditions
                   </a>
@@ -671,7 +671,7 @@ export default function LoginPageLayer() {
                   <a href="/cancellation-refunds" className="text-muted text-decoration-none mx-2">
                     Cancellation and Refunds
                   </a>
-                </div>
+                </div> */}
 
                 <p className="text-muted mb-0">
                   © {new Date().getFullYear()} COLOURS BOUTIQUE. All Rights Reserved. Developed &amp; Maintained
