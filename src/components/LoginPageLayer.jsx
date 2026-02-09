@@ -292,7 +292,7 @@ export default function LoginPageLayer() {
                   <div className="card-header bg-transparent border-bottom-0 p-0 mb-4">
                     {!forgotPasswordActive ? (
                       <ul className="nav nav-tabs nav-tabs-custom nav-justified">
-                        <li className="nav-item">
+                        <li className="nav-item" style={{ display: "flex", justifyContent: "center" }}>
                           <button
                             className={`nav-link ${activeTab === 'admin' ? 'active' : ''}`}
                             onClick={() => {
@@ -304,10 +304,10 @@ export default function LoginPageLayer() {
                               })
                             }}
                           >
-                            Admin Login
+                            Admin
                           </button>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item" style={{ display: "flex", justifyContent: "center" }}>
                           <button
                             className={`nav-link ${activeTab === 'adminUsers' ? 'active' : ''}`}
                             onClick={() => {
@@ -319,7 +319,7 @@ export default function LoginPageLayer() {
                               })
                             }}
                           >
-                            Admin Users Login
+                            Admin User
                           </button>
                         </li>
                       </ul>
@@ -363,7 +363,7 @@ export default function LoginPageLayer() {
                               autoComplete="email"
                               autoFocus
                             />
-                            {formErrors.email ? <><p className='text-danger'>{formErrors.email}</p></> : <></>}
+                            {formErrors.email ? <><p className='text-white'>{formErrors.email}</p></> : <></>}
                           </div>
 
                           <div className="mb-3">
@@ -389,7 +389,7 @@ export default function LoginPageLayer() {
                                 onChange={handleChange}
                                 autoComplete="current-password"
                               />
-                              {formErrors.password ? <><p className='text-danger'>{formErrors.password}</p></> : <></>}
+                              {formErrors.password ? <><p className='text-white'>{formErrors.password}</p></> : <></>}
                               <button
                                 type="button"
                                 className="btn btn-link d-flex align-items-center justify-content-center position-absolute end-0 top-0 h-100 px-3"

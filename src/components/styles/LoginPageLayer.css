@@ -19,8 +19,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  /* Dark overlay */
+  background: rgba(0, 0, 0, 0.4);
+  /* Slightly darker overlay */
   z-index: 1;
 }
 
@@ -32,245 +32,269 @@
   z-index: 2;
 }
 
-/* Card Styling - Glassmorphism */
+/* Card Styling - Enhanced Glassmorphism */
 .colors-boutique-login .card {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.45);
-  /* Transparent White */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(25, 25, 25, 0.15);
+  /* Very transparent dark tint */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
   overflow: hidden;
-  max-width: 500px;
+  max-width: 420px;
+  /* Reduced width for better proportion */
   margin: 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .colors-boutique-login .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
 }
 
 .colors-boutique-login .card-body {
-  padding: 3rem 2.5rem;
+  padding: 2.5rem 2rem;
 }
 
-/* Auth Logo */
+/* Auth Logo - Fixed Size & Background */
+.colors-boutique-login .auth-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .colors-boutique-login .auth-logo img {
-  max-width: 100%;
+  max-width: 220px;
+  /* Increased size */
   height: auto;
   object-fit: contain;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  filter: none;
 }
 
-/* Typography */
+/* Typography - White/Light for Dark Glass */
 .colors-boutique-login h5 {
-  color: #2c2c2c;
+  color: #ffffff;
   font-size: 1.6rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   font-family: 'Poppins', sans-serif;
-  letter-spacing: -0.5px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .colors-boutique-login .text-muted {
-  color: #6c757d !important;
+  color: #e0e0e0 !important;
+  /* Light grey for readability */
   font-size: 0.95rem;
+  font-weight: 400;
 }
 
-/* Tabs - Modernized */
+/* Tabs - Compact & Text-Sized - Black Theme */
 .colors-boutique-login .nav-tabs-custom {
-  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  padding: 0;
 }
 
 .colors-boutique-login .nav-tabs-custom .nav-link {
-  color: #333;
+  color: #555 !important;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  padding-bottom: 0.8rem;
-  border: none;
-  border-bottom: 2px solid transparent;
+  padding: 8px 5px !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  border-radius: 0;
   transition: all 0.3s;
-  background: transparent;
-  margin-bottom: -2px;
+  background: transparent !important;
+  width: auto;
+  min-width: auto;
+  text-align: center;
 }
 
 .colors-boutique-login .nav-tabs-custom .nav-link:hover {
-  color: #000;
+  background: transparent !important;
+  color: #000 !important;
 }
 
 .colors-boutique-login .nav-tabs-custom .nav-link.active {
-  color: #3A3530;
-  border-bottom: 2px solid #3A3530;
-  font-weight: 600;
+  color: #000 !important;
+  background: transparent !important;
+  border-bottom: 2px solid #252323 !important;
+  /* font-weight: 700; */
+  box-shadow: none !important;
 }
 
 /* Form Elements */
 .colors-boutique-login .form-label {
-  color: #333;
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 500;
   font-size: 0.9rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  display: block;
+  /* Ensure alignment */
 }
 
 .colors-boutique-login .form-control {
-  background-color: rgba(255, 255, 255, 0.6);
-  border: 1px solid #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.9);
+  /* High opacity for readability */
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #333;
-  border-radius: 10px;
-  padding: 12px 16px;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
 }
 
 .colors-boutique-login .form-control:focus {
-  background-color: #fff;
-  border-color: #3A3530;
-  box-shadow: 0 0 0 4px rgba(58, 53, 48, 0.1);
+  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
   outline: none;
 }
 
 /* Input Icons */
 .colors-boutique-login .input-custom-icon .btn-link {
-  color: #999;
+  color: #666;
   padding-right: 12px;
   transition: color 0.2s;
 }
 
 .colors-boutique-login .input-custom-icon .btn-link:hover {
-  color: #3A3530;
+  color: #000;
 }
 
-/* Buttons - Gradient / Modern */
+/* Buttons - High Contrast */
 .colors-boutique-login .btn-primary {
-  background: linear-gradient(135deg, #3A3530 0%, #1a1a1a 100%);
+  background: #ffffff;
+  /* White button */
   border: none;
-  color: #ffffff;
-  border-radius: 10px;
-  padding: 14px;
+  color: #3A3530;
+  /* Dark Text */
+  border-radius: 8px;
+  padding: 12px;
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.5px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
 }
 
 .colors-boutique-login .btn-primary:hover {
-  background: linear-gradient(135deg, #504a44 0%, #2a2a2a 100%);
+  background: #f0f0f0;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .colors-boutique-login .btn-secondary {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  color: #333;
-  border-radius: 10px;
-  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px;
   font-weight: 500;
   transition: all 0.3s;
 }
 
 .colors-boutique-login .btn-secondary:hover {
-  background-color: #e2e6ea;
-  color: #000;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
 }
 
 /* Checkbox */
 .colors-boutique-login .form-check-input {
-  width: 1.25em;
-  height: 1.25em;
-  margin-top: 0.1em;
+  width: 1.1em;
+  height: 1.1em;
+  margin-top: 0.2em;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 
 .colors-boutique-login .form-check-input:checked {
-  background-color: #3A3530;
-  border-color: #3A3530;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%233A3530' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
 }
 
 .colors-boutique-login .form-check-label {
-  color: #555;
-  font-size: 0.95rem;
-  padding-left: 0.35rem;
+  color: #ffffff;
+  font-size: 0.9rem;
+  padding-left: 0.4rem;
   cursor: pointer;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Links */
 .colors-boutique-login .text-decoration-underline,
 .colors-boutique-login a {
-  color: #3A3530 !important;
+  color: #ffffff !important;
   text-decoration: none !important;
   font-weight: 600;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .colors-boutique-login .text-decoration-underline:hover,
 .colors-boutique-login a:hover {
-  color: #555 !important;
+  opacity: 0.8;
 }
 
 /* Footer Links */
 .colors-boutique-login .footer-links {
   margin-top: 2rem;
-  background: rgba(255, 255, 255, 0.7);
-  /* Slight background for readability */
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  /* Dark pill for footer */
+  padding: 8px 16px;
   border-radius: 50px;
   display: inline-block;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .colors-boutique-login .footer-links a {
-  color: #333 !important;
-  /* Darker for readability on bg */
-  font-size: 0.85rem;
-  margin: 0 0.5rem;
-  font-weight: 500;
+  color: #e0e0e0 !important;
+  font-size: 0.8rem;
+  margin: 0 0.6rem;
+  font-weight: 400;
 }
 
 .colors-boutique-login .footer-links a:hover {
-  color: #000 !important;
+  color: #ffffff !important;
 }
 
 .colors-boutique-login .text-muted.mb-0 {
   font-size: 0.8rem;
-  color: #eee !important;
-  /* Lighter for dark background */
+  color: #ccc !important;
   margin-top: 1.5rem;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 /* Loading/Transition States */
 .colors-boutique-login .auth-input {
   transform: translateZ(0);
-  /* Hardware accelerate */
-}
-
-/* Animating the background (optional subtle zoom) */
-@keyframes bgZoom {
-  0% {
-    background-size: 100% 100%;
-  }
-
-  50% {
-    background-size: 105% 105%;
-  }
-
-  100% {
-    background-size: 100% 100%;
-  }
 }
 
 /* Responsiveness */
@@ -281,7 +305,10 @@
 
   .colors-boutique-login .card {
     margin: 0 1rem;
-    backdrop-filter: blur(8px);
-    /* Less blur for performance on mobile */
+    backdrop-filter: blur(10px);
+  }
+
+  .colors-boutique-login .auth-logo img {
+    max-width: 150px;
   }
 }
