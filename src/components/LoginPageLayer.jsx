@@ -270,7 +270,7 @@ export default function LoginPageLayer() {
 
   return (
     <div className="authentication-bg min-vh-100 colors-boutique-login">
-      <div className="bg-overlay bg-light"></div>
+      <div className="bg-overlay"></div>
       <div className="container">
         <div className="d-flex flex-column min-vh-100 px-3 pt-4">
           <div className="row justify-content-center my-auto">
@@ -283,7 +283,7 @@ export default function LoginPageLayer() {
                     <a href="index" className="d-block d-flex justify-content-center auth-logo">
                       <img
                         src="/assets/images/logo/Colors-logo.jpg"
-                        alt="COLORS BOUTIQUE"
+                        alt="COLOURS BOUTIQUE"
                         height="80"
                         className="img auth-logo-dark"
                       />
@@ -336,7 +336,7 @@ export default function LoginPageLayer() {
                     <>
                       <div className="text-center mt-2">
                         <h5>Welcome Back!</h5>
-                        <p className="text-muted">Sign in to continue to COLORS BOUTIQUE.</p>
+                        <p className="text-muted">Sign in to continue to COLOURS BOUTIQUE.</p>
                       </div>
 
                       <div className="p-2 mt-4">
@@ -674,7 +674,7 @@ export default function LoginPageLayer() {
                 </div>
 
                 <p className="text-muted mb-0">
-                  © {new Date().getFullYear()} COLORS BOUTIQUE. All Rights Reserved. Developed &amp; Maintained
+                  © {new Date().getFullYear()} COLOURS BOUTIQUE. All Rights Reserved. Developed &amp; Maintained
                   By Ocean Softwares
                 </p>
               </div>

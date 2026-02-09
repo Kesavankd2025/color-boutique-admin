@@ -572,7 +572,7 @@ const MasterLayout = ({ children }) => {
         <footer className="d-footer">
           <div className="row align-items-center justify-content-between">
             <div className="col-auto">
-              <p className="mb-0">© {new Date().getFullYear()} COLORS BOUTIQUE. All Rights Reserved.</p>
+              <p className="mb-0">© {new Date().getFullYear()} COLOURS BOUTIQUE. All Rights Reserved.</p>
             </div>
             <div className="col-auto">
               <p className="mb-0">

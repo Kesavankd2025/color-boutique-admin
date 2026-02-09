@@ -2,14 +2,26 @@
 
 /* Main Page Background */
 .colors-boutique-login {
-  background-color: #EDE9E4;
-  /* Keeping original beige as requested "color also no need change" */
+  background: url('/public/assets/images/auth/login-bg-1.png') no-repeat center center/cover;
   position: relative;
   overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+}
+
+/* Overlay for better text readability */
+.colors-boutique-login .bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  /* Dark overlay */
+  z-index: 1;
 }
 
 /* Container & Layout */
@@ -20,18 +32,24 @@
   z-index: 2;
 }
 
-/* Card Styling - Cleaner and softer to match colorful playful logo */
+/* Card Styling - Glassmorphism */
 .colors-boutique-login .card {
-  border: none;
-  background: #ffffff;
-  /* Softer, more spread out shadow for a modern feel */
-  box-shadow: 0 20px 50px rgba(58, 53, 48, 0.05);
-  border-radius: 12px;
-  /* Softer rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.85);
+  /* Transparent White */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  border-radius: 16px;
   overflow: hidden;
-  max-width: 480px;
-  /* Slightly wider for better breathing room */
+  max-width: 500px;
   margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.colors-boutique-login .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
 
 .colors-boutique-login .card-body {
@@ -43,43 +61,44 @@
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  /* Make sure logo blends well */
+  margin-bottom: 1rem;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-/* Typography - Using Poppins for modern clean look, Playfair for accents */
+/* Typography */
 .colors-boutique-login h5 {
-  color: #3A3530;
-  font-size: 1.5rem;
-  font-weight: 600;
+  color: #2c2c2c;
+  font-size: 1.6rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.5px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .colors-boutique-login .text-muted {
-  color: #888 !important;
-  font-size: 0.9rem;
+  color: #6c757d !important;
+  font-size: 0.95rem;
 }
 
 /* Tabs - Modernized */
 .colors-boutique-login .nav-tabs-custom {
-  border-bottom: 2px solid #f0f0f0;
-  margin-bottom: 0;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
 }
 
 .colors-boutique-login .nav-tabs-custom .nav-link {
-  color: #999;
+  color: #888;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
   border: none;
   border-bottom: 2px solid transparent;
   transition: all 0.3s;
   background: transparent;
   margin-bottom: -2px;
-  /* Overlap border */
 }
 
 .colors-boutique-login .nav-tabs-custom .nav-link:hover {
@@ -92,88 +111,88 @@
   font-weight: 600;
 }
 
-/* Form Elements - Softer and cleaner */
+/* Form Elements */
 .colors-boutique-login .form-label {
-  color: #555;
-  font-weight: 500;
-  font-size: 0.85rem;
+  color: #444;
+  font-weight: 600;
+  font-size: 0.9rem;
   margin-bottom: 8px;
 }
 
 .colors-boutique-login .form-control {
-  background-color: #f8f9fa;
-  /* Very light grey input background */
-  border: 1px solid #e9ecef;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e0e0e0;
   color: #333;
-  border-radius: 8px;
-  /* Rounded inputs */
+  border-radius: 10px;
   padding: 12px 16px;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  transition: all 0.2s;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .colors-boutique-login .form-control:focus {
   background-color: #fff;
   border-color: #3A3530;
-  /* Focus color matching brand dark */
-  box-shadow: 0 0 0 3px rgba(58, 53, 48, 0.1);
+  box-shadow: 0 0 0 4px rgba(58, 53, 48, 0.1);
+  outline: none;
 }
 
 /* Input Icons */
 .colors-boutique-login .input-custom-icon .btn-link {
   color: #999;
   padding-right: 12px;
+  transition: color 0.2s;
 }
 
 .colors-boutique-login .input-custom-icon .btn-link:hover {
   color: #3A3530;
 }
 
-/* Buttons - Modern Pill or Rounded Rect */
+/* Buttons - Gradient / Modern */
 .colors-boutique-login .btn-primary {
-  background-color: #3A3530;
-  border: 1px solid #3A3530;
+  background: linear-gradient(135deg, #3A3530 0%, #1a1a1a 100%);
+  border: none;
   color: #ffffff;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 10px;
+  padding: 14px;
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
-  /* Cleaner than uppercase */
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(58, 53, 48, 0.15);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .colors-boutique-login .btn-primary:hover {
-  background-color: #221f1c;
-  border-color: #221f1c;
+  background: linear-gradient(135deg, #504a44 0%, #2a2a2a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(58, 53, 48, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .colors-boutique-login .btn-secondary {
-  background-color: #f1f1f1;
-  border: 1px solid #f1f1f1;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
   color: #333;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 12px;
   font-weight: 500;
+  transition: all 0.3s;
 }
 
 .colors-boutique-login .btn-secondary:hover {
-  background-color: #e2e2e2;
+  background-color: #e2e6ea;
   color: #000;
 }
 
 /* Checkbox */
 .colors-boutique-login .form-check-input {
-  width: 1.2em;
-  height: 1.2em;
-  margin-top: 0.15em;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.1em;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }
 
 .colors-boutique-login .form-check-input:checked {
@@ -182,9 +201,10 @@
 }
 
 .colors-boutique-login .form-check-label {
-  color: #666;
-  font-size: 0.9rem;
-  padding-left: 0.25rem;
+  color: #555;
+  font-size: 0.95rem;
+  padding-left: 0.35rem;
+  cursor: pointer;
 }
 
 /* Links */
@@ -192,39 +212,76 @@
 .colors-boutique-login a {
   color: #3A3530 !important;
   text-decoration: none !important;
-  font-weight: 500;
+  font-weight: 600;
+  transition: color 0.2s;
 }
 
 .colors-boutique-login .text-decoration-underline:hover,
 .colors-boutique-login a:hover {
-  text-decoration: underline !important;
+  color: #555 !important;
 }
 
-/* Footer in Card or Bottom */
+/* Footer Links */
 .colors-boutique-login .footer-links {
   margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  /* Slight background for readability */
+  padding: 10px;
+  border-radius: 50px;
+  display: inline-block;
+  backdrop-filter: blur(5px);
 }
 
 .colors-boutique-login .footer-links a {
-  color: #888 !important;
+  color: #333 !important;
+  /* Darker for readability on bg */
   font-size: 0.85rem;
   margin: 0 0.5rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .colors-boutique-login .footer-links a:hover {
-  color: #3A3530 !important;
+  color: #000 !important;
 }
 
 .colors-boutique-login .text-muted.mb-0 {
   font-size: 0.8rem;
-  color: #aaa !important;
+  color: #eee !important;
+  /* Lighter for dark background */
   margin-top: 1.5rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Loading/Transition States */
+.colors-boutique-login .auth-input {
+  transform: translateZ(0);
+  /* Hardware accelerate */
+}
+
+/* Animating the background (optional subtle zoom) */
+@keyframes bgZoom {
+  0% {
+    background-size: 100% 100%;
+  }
+
+  50% {
+    background-size: 105% 105%;
+  }
+
+  100% {
+    background-size: 100% 100%;
+  }
 }
 
 /* Responsiveness */
 @media (max-width: 576px) {
   .colors-boutique-login .card-body {
     padding: 2rem 1.5rem;
+  }
+
+  .colors-boutique-login .card {
+    margin: 0 1rem;
+    backdrop-filter: blur(8px);
+    /* Less blur for performance on mobile */
   }
 }
